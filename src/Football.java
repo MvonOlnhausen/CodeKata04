@@ -32,7 +32,7 @@ public class Football {
 		for (int i = 0; i < cleanString.size(); i += 9) {
 			List<String> subList = cleanString.subList(i, i + 9);
 
-			int goalDiff = calculation.differenceFromString(subList.get(6), subList.get(7));
+			int goalDiff = calculation.differenceFromStrings(subList.get(6), subList.get(7));
 
 			if (goalDiff < diff && goalDiff >= 0) {
 

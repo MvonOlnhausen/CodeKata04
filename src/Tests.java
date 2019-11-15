@@ -14,15 +14,15 @@ public class Tests {
 
 		Calculation calculation = new Calculation();
 
-		assertEquals(1, calculation.differenceFromString("2", "1"));
-		assertEquals(9, calculation.differenceFromString("99", "90"));
-		assertEquals(4, calculation.differenceFromString("1", "-3"));
-		assertEquals(-3, calculation.differenceFromString("2", "5"));
-		assertEquals(-15, calculation.differenceFromString("-10", "5"));
-		assertEquals(-5, calculation.differenceFromString("-10", "-5"));
-		assertEquals(Integer.MIN_VALUE, calculation.differenceFromString("a", "-5"));
-		assertEquals(Integer.MIN_VALUE, calculation.differenceFromString("6", "b"));
-		assertEquals(Integer.MIN_VALUE, calculation.differenceFromString("a", "b"));
+		assertEquals(1, calculation.differenceFromStrings("2", "1"));
+		assertEquals(9, calculation.differenceFromStrings("99", "90"));
+		assertEquals(4, calculation.differenceFromStrings("1", "-3"));
+		assertEquals(-3, calculation.differenceFromStrings("2", "5"));
+		assertEquals(-15, calculation.differenceFromStrings("-10", "5"));
+		assertEquals(-5, calculation.differenceFromStrings("-10", "-5"));
+		assertEquals(Integer.MIN_VALUE, calculation.differenceFromStrings("a", "-5"));
+		assertEquals(Integer.MIN_VALUE, calculation.differenceFromStrings("6", "b"));
+		assertEquals(Integer.MIN_VALUE, calculation.differenceFromStrings("a", "b"));
 	}
 
 	@Test

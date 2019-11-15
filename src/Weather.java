@@ -45,7 +45,7 @@ public class Weather {
 
 			List<String> subList = cleanedString.subList(i, i + 16);
 
-			int differ = calculation.differenceFromString(subList.get(1), subList.get(2));
+			int differ = calculation.differenceFromStrings(subList.get(1), subList.get(2));
 
 			if (differ < diff) {
 
@@ -69,7 +69,7 @@ public class Weather {
 
 			List<String> subList = cleanedString.subList(i, i + 16);
 
-			int differ = calculation.differenceFromString(subList.get(1), subList.get(2));
+			int differ = calculation.differenceFromStrings(subList.get(1), subList.get(2));
 
 			if (differ < diff) {
 
