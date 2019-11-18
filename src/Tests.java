@@ -82,44 +82,44 @@ public class Tests {
 		String str = "*-a";
 		String str2 = "";
 		String str3 = "w r*4-";
-		String[] string = { "", "", "a" };
-		String[] string2 = { "" };
-		String[] string3 = { "w", "r", "4" };
+		String[] strArray = { "", "", "a" };
+		String[] strArray2 = { "" };
+		String[] strArray3 = { "w", "r", "4" };
 
-		assertArrayEquals(string, dataPreparation.replaceAndSplit(str));
-		assertArrayEquals(string2, dataPreparation.replaceAndSplit(str2));
-		assertArrayEquals(string3, dataPreparation.replaceAndSplit(str3));
+		assertArrayEquals(strArray, dataPreparation.replaceAndSplit(str));
+		assertArrayEquals(strArray2, dataPreparation.replaceAndSplit(str2));
+		assertArrayEquals(strArray3, dataPreparation.replaceAndSplit(str3));
 	}
 
 	@Test
 	public void getSmallestDifferenceTest() {
 
 		Weather weather = new Weather();
-		List<String> cleanedString = Arrays.asList("1", "2", "1", "", "", "", "", "", "", "", "", "", "", "", "", "",
-				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-		List<String> cleanedString2 = Arrays.asList("2", "100", "-10", "", "", "", "", "", "", "", "", "", "", "", "",
+		List<String> cleanedStringList = Arrays.asList("1", "2", "1", "", "", "", "", "", "", "", "", "", "", "", "",
 				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-		List<String> cleanedString3 = Arrays.asList("3", "-4", "2", "", "", "", "", "", "", "", "", "", "", "", "", "",
-				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+		List<String> cleanedStringList2 = Arrays.asList("2", "100", "-10", "", "", "", "", "", "", "", "", "", "", "",
+				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+		List<String> cleanedStringList3 = Arrays.asList("3", "-4", "2", "", "", "", "", "", "", "", "", "", "", "", "",
+				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-		assertEquals(1, weather.getSmallestDifference(cleanedString));
-		assertEquals(110, weather.getSmallestDifference(cleanedString2));
-		assertEquals(-6, weather.getSmallestDifference(cleanedString3));
+		assertEquals(1, weather.getSmallestDifference(cleanedStringList));
+		assertEquals(110, weather.getSmallestDifference(cleanedStringList2));
+		assertEquals(-6, weather.getSmallestDifference(cleanedStringList3));
 	}
 
 	@Test
-	public void getSmallestDayTest() {
+	public void getSmallestDifferenceInfoTest() {
 
 		Weather weather = new Weather();
-		List<String> cleanedString = Arrays.asList("1", "2", "1", "", "", "", "", "", "", "", "", "", "", "", "", "",
-				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-		List<String> cleanedString2 = Arrays.asList("2", "100", "-10", "", "", "", "", "", "", "", "", "", "", "", "",
+		List<String> cleanedStringList = Arrays.asList("1", "2", "1", "", "", "", "", "", "", "", "", "", "", "", "",
 				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-		List<String> cleanedString3 = Arrays.asList("3", "-4", "2", "", "", "", "", "", "", "", "", "", "", "", "", "",
-				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+		List<String> cleanedStringList2 = Arrays.asList("2", "100", "-10", "", "", "", "", "", "", "", "", "", "", "",
+				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+		List<String> cleanedStringList3 = Arrays.asList("3", "-4", "2", "", "", "", "", "", "", "", "", "", "", "", "",
+				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-		assertEquals("1", weather.getSmallestDifferenceInfo(cleanedString));
-		assertEquals("2", weather.getSmallestDifferenceInfo(cleanedString2));
-		assertEquals("3", weather.getSmallestDifferenceInfo(cleanedString3));
+		assertEquals("1", weather.getSmallestDifferenceInfo(cleanedStringList));
+		assertEquals("2", weather.getSmallestDifferenceInfo(cleanedStringList2));
+		assertEquals("3", weather.getSmallestDifferenceInfo(cleanedStringList3));
 	}
 }
