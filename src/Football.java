@@ -6,13 +6,13 @@ public class Football {
 	private FileInput commonCode = new FileInput();
 	private DataPreparation dataPreparation = new DataPreparation();
 	private Calculation calculation = new Calculation();
-	private List<String> cleanString = new ArrayList<String>();
-	private int diff = Integer.MAX_VALUE;
+	private List<String> cleanStringList = new ArrayList<String>();
+	private int positiveDifference = Integer.MAX_VALUE;
 	private int difference = Integer.MAX_VALUE;
-	private int diffNeg = Integer.MIN_VALUE;
-	private String smallest = "";
-	private String smallest2 = "";
-	private String small = "";
+	private int negativeDifference = Integer.MIN_VALUE;
+	private String positiveDifferenceInfo = "";
+	private String negativeDifferenceInfo = "";
+	private String differenceInfo = "";
 
 	/*
 	 * prints the name of the team with the smallest difference in ‘for’ and
@@ -26,30 +26,31 @@ public class Football {
 
 		for (String[] strArray : strArrayList2) {
 
-			cleanString.addAll(dataPreparation.cleanList(strArray));
+			cleanStringList.addAll(dataPreparation.cleanList(strArray));
 		}
 
-		for (int i = 0; i < cleanString.size(); i += 9) {
-			List<String> subList = cleanString.subList(i, i + 9);
+		for (int index = 0; index < cleanStringList.size(); index += 9) {
+			List<String> subListPerDataRow = cleanStringList.subList(index, index + 9);
 
-			int goalDiff = calculation.differenceFromStrings(subList.get(6), subList.get(7));
+			int goalDifference = calculation.differenceFromStrings(subListPerDataRow.get(6), subListPerDataRow.get(7));
 
-			if (goalDiff < diff && goalDiff >= 0) {
+			if (goalDifference < positiveDifference && goalDifference >= 0) {
 
-				diff = goalDiff;
-				smallest = subList.get(1);
+				positiveDifference = goalDifference;
+				positiveDifferenceInfo = subListPerDataRow.get(1);
 
-			} else if (goalDiff > diffNeg && goalDiff <= 0) {
+			} else if (goalDifference > negativeDifference && goalDifference <= 0) {
 
-				diffNeg = goalDiff;
-				smallest2 = subList.get(1);
+				negativeDifference = goalDifference;
+				negativeDifferenceInfo = subListPerDataRow.get(1);
 			}
 
-			difference = calculation.getOverallDifference(diff, diffNeg);
-			small = calculation.getOverallDifferenceInfo(diff, diffNeg, smallest, smallest2);
+			difference = calculation.getOverallDifference(positiveDifference, negativeDifference);
+			differenceInfo = calculation.getOverallDifferenceInfo(positiveDifference, negativeDifference,
+					positiveDifferenceInfo, negativeDifferenceInfo);
 		}
 
-		return "The team " + small + " has the smallest difference in 'for' and 'against' goals with difference of "
-				+ difference + ".";
+		return "The team " + differenceInfo
+				+ " has the smallest difference in 'for' and 'against' goals with difference of " + difference + ".";
 	}
 }
