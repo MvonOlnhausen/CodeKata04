@@ -15,8 +15,8 @@ public class FileInput {
 	 */
 	public List<String[]> readInFile(String file) {
 
-		String[] values = {};
-		List<String[]> strArrayList = new LinkedList<String[]>();
+		String[] strArray = {};
+		List<String[]> arrayStringList = new LinkedList<String[]>();
 		DataPreparation dataPreparation = new DataPreparation();
 
 		try {
@@ -24,8 +24,8 @@ public class FileInput {
 			String str = in.readLine();
 
 			while ((str = in.readLine()) != null) {
-				values = dataPreparation.replaceAndSplit(str);
-				strArrayList.add(values);
+				strArray = dataPreparation.replaceAndSplit(str);
+				arrayStringList.add(strArray);
 			}
 
 			in.close();
@@ -34,6 +34,6 @@ public class FileInput {
 			e.printStackTrace();
 		}
 
-		return strArrayList;
+		return arrayStringList;
 	}
 }

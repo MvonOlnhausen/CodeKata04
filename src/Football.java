@@ -45,8 +45,8 @@ public class Football {
 				smallest2 = subList.get(1);
 			}
 
-			difference = calculation.getAbsoluteDifference(diff, diffNeg);
-			small = calculation.getAbsoluteDifferenceInfo(diff, diffNeg, smallest, smallest2);
+			difference = calculation.getOverallDifference(diff, diffNeg);
+			small = calculation.getOverallDifferenceInfo(diff, diffNeg, smallest, smallest2);
 		}
 
 		return "The team " + small + " has the smallest difference in 'for' and 'against' goals with difference of "
