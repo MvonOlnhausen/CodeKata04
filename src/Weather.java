@@ -3,9 +3,9 @@ import java.util.List;
 
 public class Weather {
 
-	private String smallest = "";
-	private int diff = Integer.MAX_VALUE;
-	private List<String> cleanedString = new ArrayList<String>();
+	private String differenceInfo = "";
+	private int difference = Integer.MAX_VALUE;
+	private List<String> cleanedStringList = new ArrayList<String>();
 	private FileInput fileInput = new FileInput();
 	private DataPreparation dataPreparation = new DataPreparation();
 	private Calculation calculation = new Calculation();
@@ -16,19 +16,19 @@ public class Weather {
 	 * @return: a String with the final answer
 	 */
 	public String weatherData() {
-		List<String[]> strArrayList = fileInput.readInFile("src/data/weather.dat");
+		List<String[]> arrayStringList = fileInput.readInFile("src/data/weather.dat");
 
-		for (String[] strArray : strArrayList) {
+		for (String[] strArray : arrayStringList) {
 			strArray = dataPreparation.replaceGapsInData(strArray);
-			cleanedString.addAll(dataPreparation.cleanList(strArray));
+			cleanedStringList.addAll(dataPreparation.cleanList(strArray));
 		}
 
-		cleanedString.subList(cleanedString.indexOf("mo"), cleanedString.size()).clear();
+		cleanedStringList.subList(cleanedStringList.indexOf("mo"), cleanedStringList.size()).clear();
 
-		diff = getSmallestDifference(cleanedString);
-		smallest = getSmallestDay(cleanedString);
+		difference = getSmallestDifference(cleanedStringList);
+		differenceInfo = getSmallestDifferenceInfo(cleanedStringList);
 
-		return "On day " + smallest + " is the smallest temperature spread with " + diff + " degrees.";
+		return "On day " + differenceInfo + " is the smallest temperature spread with " + difference + " degrees.";
 	}
 
 	/*
@@ -38,21 +38,21 @@ public class Weather {
 	 * 
 	 * @return: the smallest difference over all sublists
 	 */
-	public int getSmallestDifference(List<String> cleanedString) {
-		int diff = Integer.MAX_VALUE;
+	public int getSmallestDifference(List<String> cleanedStringList) {
+		int difference = Integer.MAX_VALUE;
 
-		for (int i = 0; i < cleanedString.size() - 16; i += 16) {
+		for (int index = 0; index < cleanedStringList.size() - 16; index += 16) {
 
-			List<String> subList = cleanedString.subList(i, i + 16);
+			List<String> subListPerTableRow = cleanedStringList.subList(index, index + 16);
 
-			int differ = calculation.differenceFromStrings(subList.get(1), subList.get(2));
+			int calculatedDifference = calculation.differenceFromStrings(subListPerTableRow.get(1), subListPerTableRow.get(2));
 
-			if (differ < diff) {
+			if (calculatedDifference < difference) {
 
-				diff = differ;
+				difference = calculatedDifference;
 			}
 		}
-		return diff;
+		return difference;
 	}
 
 	/*
@@ -62,21 +62,21 @@ public class Weather {
 	 * 
 	 * @return: the day of the smallest difference
 	 */
-	public String getSmallestDay(List<String> cleanedString) {
-		int diff = Integer.MAX_VALUE;
+	public String getSmallestDifferenceInfo(List<String> cleanedStringList) {
+		int difference = Integer.MAX_VALUE;
 
-		for (int i = 0; i < cleanedString.size() - 16; i += 16) {
+		for (int index = 0; index < cleanedStringList.size() - 16; index += 16) {
 
-			List<String> subList = cleanedString.subList(i, i + 16);
+			List<String> subListPerTableRow = cleanedStringList.subList(index, index + 16);
 
-			int differ = calculation.differenceFromStrings(subList.get(1), subList.get(2));
+			int calculatedDifference = calculation.differenceFromStrings(subListPerTableRow.get(1), subListPerTableRow.get(2));
 
-			if (differ < diff) {
+			if (calculatedDifference < difference) {
 
-				diff = differ;
-				smallest = subList.get(0);
+				difference = calculatedDifference;
+				differenceInfo = subListPerTableRow.get(0);
 			}
 		}
-		return smallest;
+		return differenceInfo;
 	}
 }

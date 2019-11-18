@@ -118,8 +118,8 @@ public class Tests {
 		List<String> cleanedString3 = Arrays.asList("3", "-4", "2", "", "", "", "", "", "", "", "", "", "", "", "", "",
 				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-		assertEquals("1", weather.getSmallestDay(cleanedString));
-		assertEquals("2", weather.getSmallestDay(cleanedString2));
-		assertEquals("3", weather.getSmallestDay(cleanedString3));
+		assertEquals("1", weather.getSmallestDifferenceInfo(cleanedString));
+		assertEquals("2", weather.getSmallestDifferenceInfo(cleanedString2));
+		assertEquals("3", weather.getSmallestDifferenceInfo(cleanedString3));
 	}
 }
