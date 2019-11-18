@@ -8,12 +8,12 @@ public class Calculation {
 	 * 
 	 * @return: difference Integer or Integer MIN VALUE when illegal argument
 	 */
-	public int differenceFromStrings(String stringA, String stringB) {
+	public int differenceFromStrings(String numberAsStringA, String numberAsStringB) {
 
 		int difference = Integer.MAX_VALUE;
 
 		try {
-			difference = Integer.parseInt(stringA) - Integer.parseInt(stringB);
+			difference = Integer.parseInt(numberAsStringA) - Integer.parseInt(numberAsStringB);
 		} catch (IllegalArgumentException e) {
 			difference = Integer.MIN_VALUE;
 			e.printStackTrace();
