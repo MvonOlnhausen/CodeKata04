@@ -29,19 +29,19 @@ public class Calculation {
 	 * 
 	 * @return: the absolute difference
 	 */
-	public int getAbsoluteDifference(int diff, int diffNeg) {
+	public int getOverallDifference(int positiveDifference, int negativeDifference) {
 
-		int difference;
+		int overallDifference;
 
-		if (Math.abs(diff) > Math.abs(diffNeg)) {
+		if (Math.abs(positiveDifference) > Math.abs(negativeDifference)) {
 
-			difference = diffNeg;
+			overallDifference = negativeDifference;
 
 		} else {
 
-			difference = diff;
+			overallDifference = positiveDifference;
 		}
-		return difference;
+		return overallDifference;
 	}
 
 	/*
@@ -52,19 +52,20 @@ public class Calculation {
 	 * 
 	 * @return: the entry of the absolute difference
 	 */
-	public String getAbsoluteDifferenceInfo(int diff, int diffNeg, String smallest, String smallest2) {
+	public String getOverallDifferenceInfo(int positiveDifference, int negativeDifference,
+			String positiveDifferenceInfo, String negativeDifferenceInfo) {
 
-		String small;
+		String overallDifferenceInfo;
 
-		if (Math.abs(diff) > Math.abs(diffNeg)) {
+		if (Math.abs(positiveDifference) > Math.abs(negativeDifference)) {
 
-			small = smallest2;
+			overallDifferenceInfo = negativeDifferenceInfo;
 
 		} else {
 
-			small = smallest;
+			overallDifferenceInfo = positiveDifferenceInfo;
 		}
-		return small;
+		return overallDifferenceInfo;
 	}
 
 }

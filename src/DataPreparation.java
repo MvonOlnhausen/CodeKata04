@@ -26,12 +26,11 @@ public class DataPreparation {
 
 		List<String> cleanStringList = new ArrayList<String>();
 
-		for (String v : strArray) {
-			if (!v.equals("")) {
-				cleanStringList.add(v);
+		for (String arrayEntry : strArray) {
+			if (!arrayEntry.equals("")) {
+				cleanStringList.add(arrayEntry);
 			}
 		}
-
 		return cleanStringList;
 	}
 
@@ -44,14 +43,14 @@ public class DataPreparation {
 	 * @return: return String array with replacements
 	 */
 	public String[] replaceGapsInData(String[] strArray) {
-		for (int i = 0; i < strArray.length - 4; i++) {
-			if (strArray[i].equals("")
-					&& (strArray[i++].equals("") && strArray[i + 2].equals("") && strArray[i + 3].equals("")
-							&& strArray[i + 4].equals(""))
-					&& (strArray[i - 1].equals("") && strArray[i - 2].equals("") && strArray[i - 4].equals("")
-							&& strArray[i - 3].equals(""))) {
+		for (int index = 0; index < strArray.length - 4; index++) {
+			if (strArray[index].equals("")
+					&& (strArray[index++].equals("") && strArray[index + 2].equals("") && strArray[index + 3].equals("")
+							&& strArray[index + 4].equals(""))
+					&& (strArray[index - 1].equals("") && strArray[index - 2].equals("")
+							&& strArray[index - 4].equals("") && strArray[index - 3].equals(""))) {
 
-				strArray[i + 6] = "Null";
+				strArray[index + 6] = "Null";
 			}
 		}
 		return strArray;
